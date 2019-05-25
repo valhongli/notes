@@ -1,0 +1,144 @@
+1. Interpreting Adversarially Trained Convolutional Neural Networks
+    
+    We attempt to interpret how adversarially trained
+convolutional neural networks (AT-CNNs) recognize objects. We design systematic approaches to
+interpret AT-CNNs in both qualitative and quantitative ways and compare them with normally
+trained models. Surprisingly, we find that **adversarial training alleviates the texture bias of standard CNNs when trained on object recognition
+tasks, and helps CNNs learn a more shape-biased
+representation**. We validate our hypothesis from
+two aspects. First, we compare the salience maps
+of AT-CNNs and standard CNNs on clean images
+and images under different transformations. The
+comparison could visually show that the prediction of the two types of CNNs is sensitive to dramatically different types of features. Second, to
+achieve quantitative verification, we construct additional test datasets that destroy either textures or
+shapes, such as style-transferred version of clean data, saturated images and patch-shuffled ones, and then evaluate the classification accuracy of AT-CNNs and normal CNNs on these datasets. Our findings shed some light on **why AT-CNNs are more robust than those normally trained ones and contribute to a better understanding of adversarial training over CNNs from an interpretation
+perspective**.
+
+2. Multi-Sample Dropout for Accelerated Training and Better Generalization
+
+    Dropout is a simple but efficient regularization technique for achieving better generalization of deep neural networks (DNNs); hence it is widely used in tasks based on DNNs. During training, dropout randomly discards a portion of the neurons to avoid overfitting. This paper presents an enhanced dropout technique, which we call multi-sample dropout, for both accelerating training and improving generalization over the original dropout. **The original dropout creates a randomly selected subset (called a dropout sample) from the input in each training iteration while the multi-sample dropout creates multiple dropout samples**. **The loss is calculated for each sample, and then the sample losses are averaged to obtain the final loss**. This technique can be easily implemented without implementing a new operator by duplicating a part of the network after the dropout layer while sharing the weights among the duplicated fully connected layers. Experimental results showed that **multi-sample dropout significantly accelerates training by reducing the number of iterations until convergence** for image classification tasks using the ImageNet, CIFAR-10, CIFAR-100, and SVHN datasets. Multi-sample dropout does not significantly increase computation cost per iteration because most of the computation time is consumed in the convolution layers before the dropout layer, which are not duplicated. Experiments also showed that networks trained using multi-sample dropout achieved lower error rates and losses for both the training set and validation set.
+
+3. Spatial Group-wise Enhance: Improving Semantic Feature Learning in Convolutional Networks
+    
+    The Convolutional Neural Networks (CNNs) generate the feature representation
+of complex objects by collecting hierarchical and different parts of semantic subfeatures. These sub-features can usually be distributed in grouped form in the
+feature vector of each layer [43, 32], representing various semantic entities. However, the activation of these sub-features is often spatially affected by similar patterns and noisy backgrounds, resulting in erroneous localization and identification. We propose a Spatial Group-wise Enhance (SGE) module that can **adjust the importance of each sub-feature by generating an attention factor for each spatial location in each semantic group, so that every individual group can autonomously
+enhance its learnt expression and suppress possible noise**. **The attention factors
+are only guided by the similarities between the global and local feature descriptors
+inside each group, thus the design of SGE module is extremely lightweight with
+almost no extra parameters and calculations**. Despite being trained with only category supervisions, the SGE component is extremely effective in highlighting multiple active areas with various high-order semantics (such as the dog’s eyes, nose, etc.). When integrated with popular CNN backbones, SGE can significantly boost the performance of image recognition tasks. Specifically, based on ResNet50 backbones, SGE achieves 1.2% Top-1 accuracy improvement on the ImageNet
+benchmark and 1.0∼2.0% AP gain on the COCO benchmark across a wide range of detectors (Faster/Mask/Cascade RCNN and RetinaNet). Codes and pretrained models are available at https://github.com/implus/PytorchInsight
+
+4. Speech2Face: Learning the Face Behind a Voice
+
+    How much can we infer about a person’s looks from the
+way they speak? In this paper, we study the task of reconstructing a facial image of a person from a short audio recording of that person speaking. We design and train a
+deep neural network to perform this task using millions of natural Internet/YouTube videos of people speaking. During training, our model learns **voice-face correlations that allow it to produce images that capture various physical attributes of the speakers such as age, gender and ethnicity**.
+This is done in a self-supervised manner, by utilizing the natural co-occurrence of faces and speech in Internet videos, without the need to model attributes explicitly. We evaluate and numerically quantify how—and in what manner—our Speech2Face reconstructions, obtained directly from audio, resemble the true face images of the speakers
+
+5. Network Pruning via Transformable Architecture Search
+
+    Network pruning reduces the computation costs of an over-parameterized network
+without performance damage. Prevailing pruning algorithms pre-define the width
+and depth of the pruned networks, and then transfer parameters from the unpruned
+network to pruned networks. To break the structure limitation of the pruned networks, we propose to apply neural architecture search to search directly for a
+network with flexible channel and layer sizes. The number of the channels/layers
+is learned by minimizing the loss of the pruned networks. The feature map of the
+pruned network is an **aggregation of K feature map fragments (generated by K
+networks of different sizes)**, which are sampled based on the probability distribution. The loss can be back-propagated not only to the network weights, but also to the parameterized distribution to explicitly tune the size of the channels/layers. Specifically, we **apply channel-wise interpolation to keep the feature map with different channel sizes aligned in the aggregation procedure**. The maximum probability for the size in each distribution serves as the width and depth of the pruned network, whose parameters are learned by knowledge transfer, e.g., knowledge distillation, from the original networks. Experiments on CIFAR-10, CIFAR-100
+and ImageNet demonstrate the effectiveness of our new perspective of network
+pruning compared to traditional network pruning algorithms. Various searching
+and knowledge transfer approaches are conducted to show the effectiveness of the
+two components.
+
+6. Semi-supervised learning based on generative adversarial network: a
+comparison between good GAN and bad GAN approach
+
+    Recently, semi-supervised learning methods based on
+generative adversarial networks (GANs) have received
+much attention. Among them, two distinct approaches have
+achieved competitive results on a variety of benchmark
+datasets. **Bad GAN learns a classifier with unrealistic samples distributed on the complement of the support of the input data. Conversely, Triple GAN consists of a three-player
+game that tries to leverage good generated samples to boost
+classification results**. In this paper, we perform a comprehensive comparison of these two approaches on different
+benchmark datasets. We demonstrate their different properties on image generation, and sensitivity to the amount
+of labeled data provided. By comprehensively comparing
+these two methods, we hope to shed light on the future of
+GAN-based semi-supervised learning
+
+7. Non-Parametric Priors For Generative Adversarial Networks
+
+    The advent of generative adversarial networks
+(GAN) has enabled new capabilities in synthesis, interpolation, and data augmentation heretofore considered very challenging. However, one
+of the common assumptions in most GAN architectures is the **assumption of simple parametric latent-space distributions**. While easy to implement, a simple latent-space distribution can be
+problematic for uses such as interpolation. This is due to distributional mismatches when samples are interpolated in the latent space. We present a straightforward formalization of this problem; using basic results from probability theory and offthe-shelf-optimization tools, we develop ways to arrive at appropriate non-parametric priors. The obtained prior exhibits unusual qualitative properties in terms of its shape, and quantitative benefits in terms of lower divergence with its mid-point
+distribution. We demonstrate that our designed prior helps improve image generation along any Euclidean straight line during interpolation, both qualitatively and quantitatively, without any additional training or architectural modifications. The
+proposed formulation is quite flexible, paving the way to impose newer constraints on the latentspace statistics
+
+8. Testing Deep Neural Network based
+Image Classifiers
+
+    Image classification is an important task in today’s
+world with many applications from socio-technical to safetycritical domains. The recent advent of Deep Neural Network
+(DNN) is the key behind such a wide-spread success. However,
+such wide adoption comes with the concerns about the reliability
+of these systems, as several erroneous behaviors have already
+been reported in many sensitive and critical circumstances. Thus,
+it has become crucial to rigorously test the image classifiers to
+ensure high reliability.
+Many reported erroneous cases in popular neural image
+classifiers appear because the models often confuse one class with
+another, or show biases towards some classes over others. These
+errors usually violate some group properties. Most existing DNN
+testing and verification techniques focus on per image violations
+and thus fail to detect such group-level confusions or biases. In
+this paper, we design, implement and evaluate DeepInspect, a
+white box testing tool, for **automatically detecting confusion and
+bias of DNN-driven image classification applications**. We evaluate
+DeepInspect using popular DNN-based image classifiers and
+detect hundreds of classification mistakes. Some of these cases
+are able to expose potential biases of the network towards certain
+populations. DeepInspect further reports many classification
+errors in state-of-the-art robust models.
+
+9. Zero-Shot Knowledge Distillation in Deep Networks
+
+    Knowledge distillation deals with the problem of training a smaller model (Student) from a high capacity source model (Teacher) so as to retain most of its performance. Existing approaches use either the training data or meta-data extracted from it in order to train the Student. However, accessing the dataset on which the Teacher has been trained may not always be feasible if the dataset is very large or it poses privacy or safety concerns (e.g., bio-metric or medical data). Hence, in this paper,we propose a novel data-free method to train the Student from the Teacher. Without even using any meta-data, we synthesize the Data Impressions from the complex Teacher model and utilize these as surrogates for the original training data samples to transfer its learning to Student via knowledge distillation. We, therefore, dub our method “ZeroShot Knowledge Distillation” and demonstrate that our framework results in competitive generalization performance as achieved by distillation using the actual training data samples on multiplebenchmark datasets.
+
+10. Few-Shot Adversarial Learning of Realistic Neural Talking Head Models
+
+    Several recent works have shown how highly realistic human head images can be obtained by training convolutional neural networks to generate them. In order to create a personalized talking head model, these works require training on a large dataset of images of a single person. However, in many practical scenarios, such personalized talking head models need to be learned from a few image views of a person, potentially even a single image. Here, we **present a system with such few-shot capability**. It performs lengthy meta-learning on a large dataset of videos, and after that is able to frame few- and one-shot learning of neural talking head models of previously unseen people as adversarial training problems with high capacity generators and discriminators. Crucially, the system is able to initialize the parameters of both the generator and the discriminator in a person-specific way, so that training can be based on just a few images and done quickly, despite the need to tune tens of millions of parameters. We show that such an approach is able to learn highly realistic and personalized talking head models of new people and even portrait paintings.
+
+11. S-Flow GAN
+
+    This work offers a new method for generating photo-realistic images from semantic label maps and a simulator edge map images. We do so in a conditional manner, where we train a Generative Adversarial network (GAN) given an image and its semantic label map to output a photo-realistic version of that scene. Existing architectures of GANs still lack the photo-realism capabilities. We address this issue by **embedding edge maps, and presenting the Generator with an edge map image as a prior, which enables generating high level details in the image**. We offer a model that uses this generator to create visually appealing videos as well, when a sequence of images is given
+
+12. Neighborhood Enlargement in Graph Neural Networks
+
+    Graph Neural Network (GNN) is an effective framework for representation learning and prediction for graph structural data. A neighborhood aggregation scheme is applied in the training of GNN and variants, that representation of each node is calculated through recursively aggregating and transforming representation of the neighboring nodes. A variety of GNNS and the variants are build and have achieved state-of-the-art results on both node and graph classification tasks. However, despite common neighborhood which is used in the state-of-the-art GNN models, there is little analysis on the properties of the neighborhood in the neighborhood aggregation scheme. Here, we analyze the properties of the node, edges, and neighborhood of the graph model. Our results characterize the efficiency of the common neighborhood used in the state-of-the-art GNNs, and show that it is not sufficient for the representation learning of the nodes. We **propose a simple neighborhood which is likely to be more sufficient**. We empirically validate our theoretical analysis on a number of graph classification benchmarks and demonstrate that our methods achieve state-of-the-art performance on listed benchmarks. The implementation code is available at https://github.com/CODE-SUBMIT/Neighborhood-Enlargement-in-Graph-Network.
+
+13. Dilated Spatial Generative Adversarial Networks for Ergodic Image Generation
+
+    Generative models have recently received renewed attention as a result of adversarial learning. Generative adversarial networks consist of samples generation model and a discrimination model able to distinguish between genuine and synthetic samples. In combination with convolutional (for the discriminator) and deconvolutional (for the generator) layers, they are particularly suitable for image generation, especially of natural scenes. However, the presence of fully connected layers adds global dependencies in the generated images. This may lead to high and global variations in the generated sample for small local variations in the input noise. In this work we propose to use architectures based on fully convolutional networks (including among others dilated layers), architectures specifically designed to generate globally ergodic images, that is images without global dependencies. Conducted experiments reveal that these architectures are well suited for generating natural textures such as geologic structures
+
+
+14. FONTS-2-HANDWRITING: A SEED-AUGMENT-TRAIN FRAMEWORK FOR UNIVERSAL DIGIT CLASSIFICATION
+
+    In this paper, we propose a Seed-Augment-Train/Transfer (SAT) framework that contains a synthetic seed image dataset generation procedure for languages with different numeral systems using freely available open font file datasets. This seed dataset of images is then augmented to create a purely synthetic training dataset, which is in turn used to train a deep neural network and test on held-out real world handwritten digits dataset spanning five Indic scripts, Kannada, Tamil, Gujarati, Malayalam, and Devanagari. We showcase the efficacy of this approach both qualitatively, by training a Boundary-seeking GAN (BGAN) that generates realistic digit images in the five languages, and also quantitatively by testing a CNN trained on the synthetic data on the real-world datasets. This establishes not only an interesting nexus between the font-datasets-world and transfer learning but also provides a recipe for universal-digit classification in any script.
+
+15. Task Decomposition and Synchronization for Semantic Biomedical Image Segmentation
+    
+     Semantic segmentation is essentially important to biomedical image analysis. Many recent works mainly focus on integrating the Fully Convolutional Network (FCN) architecture with sophisticated convolution implementation and deep supervision. In this paper, we propose to decompose the single segmentation task into three subsequent sub-tasks, including (1) pixel-wise image segmentation, (2) rediction of the class labels of the objects within the image, and (3) classification of the scene the image belonging to. While these three sub-tasks are trained to optimize their individual loss functions of different perceptual levels, we propose to let them interact by the task-task context ensemble. Moreover, we propose a novel sync-regularization to penalize the deviation between the outputs of the pixel-wisesegmentation and the class prediction tasks. These effective regularizations help FCN utilize context information comprehensively and attain accurate semantic segmentation, even though the number of the images for training may be limited in many biomedical applications. We have successfully applied our framework to three diverse 2D/3D medical image datasets, including Robotic Scene Segmentation Challenge 18 (ROBOT18), Brain Tumor Segmentation Challenge 18 (BRATS18), and Retinal Fundus Glaucoma Challenge (REFUGE18). We have achieved top-tier performance in all three challenges.
+
+16. Toward Learning a Unified Many-to-Many Mapping for Diverse Image Translation
+
+    Image-to-image translation, which translates input images to a different domain with a learned one-to-one mapping, has achieved impressive success in recent years. The success of translation mainly relies on the network architecture to reserve the structural information while modify the appearance slightly at the pixel level through adversarial training. Although these networks are able to learn the mapping, the translated images are predictable without exclusion. It is more desirable to diversify them using image-to-image translation by introducing uncertainties, i.e., the generated images hold potential for variations in colors and textures in addition to the general similarity to the input images, and this happens in both the target and source domains. To this end, we propose a novel generative adversarial network (GAN) based model, InjectionGAN, to learn a many-to-many mapping. In this model, the input image is combined with latent variables, which comprise of domainspecific attribute and unspecific random variations. The domain-specific attribute indicates the target domain of the translation, while the unspecific random variations introduce uncertainty into the model. A unified framework is proposed to regroup these two parts and obtain diverse generations in each domain. Extensive experiments demonstrate that the diverse generations have high quality for the challenging image-to-image translation tasks where no pairing information of the training dataset exits. Both quantitative and qualitative results prove the superior  performance of InjectionGAN over the state-of-the-art approaches
+
+17. Semi-Supervised Learning with Scarce Annotations
+
+    While semi-supervised learning (SSL) algorithms provide an efficient way to make use of both labelled and unlabelled data, they generally struggle when the number of annotated samples is very small. In this work, we consider the problem of SSL multi-class classification with very few labelled instances. We introduce two key ideas. The first is a simple but effective one: we leverage the power of transfer learning among different tasks and self-supervision to initialize a good representation of the data without making use of any label. The second idea is a new algorithm for SSL that can exploit well such a pre-trained representation. The algorithm works by alternating two phases, one fitting the labelled points and one fitting the unlabelled ones, with carefully-controlled information flow between them. The benefits are greatly reducing overfitting of the labelled data and avoiding issue with balancing labelled and unlabelled losses during training. We show empirically that this method can successfully train competitive models with as few as 10 labelled data points per class. More in general, we show that the idea of bootstrapping features using self-supervised learning always improves SSL on standard benchmarks. We show that our algorithm works increasingly well compared to other methods when refining from other tasks or datasets.
+
+18. Learning Fully Dense Neural Networks for Image Semantic Segmentation
+
+    Semantic segmentation is pixel-wise classification which retains critical spatial information. The “feature map reuse” has been commonly adopted in CNN based approaches to take advantage of feature maps in the early layers for the later spatial reconstruction. Along this direction, we go a step further by proposing a fully dense neural network with an encoderdecoder structure that we abbreviate as FDNet. For each stage in the decoder module, feature maps of all the previous blocks are adaptively aggregated to feedforward as input. On the one hand, it reconstructs the spatial boundaries accurately. On the other hand, it learns more efficiently with the more efficient gradient backpropagation. In addition, we propose the boundary-aware loss function to focus more attention on the pixels near the boundary, which boosts the “hard examples” labeling. We have demonstrated the best performance of the FDNet on the two benchmark datasets: PASCAL VOC 2012, NYUDv2 over previous works when not considering training on other datasets.
+
