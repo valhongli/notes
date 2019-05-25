@@ -1,18 +1,6 @@
 1. Interpreting Adversarially Trained Convolutional Neural Networks
     
-    We attempt to interpret how adversarially trained
-convolutional neural networks (AT-CNNs) recognize objects. We design systematic approaches to
-interpret AT-CNNs in both qualitative and quantitative ways and compare them with normally
-trained models. Surprisingly, we find that **adversarial training alleviates the texture bias of standard CNNs when trained on object recognition
-tasks, and helps CNNs learn a more shape-biased
-representation**. We validate our hypothesis from
-two aspects. First, we compare the salience maps
-of AT-CNNs and standard CNNs on clean images
-and images under different transformations. The
-comparison could visually show that the prediction of the two types of CNNs is sensitive to dramatically different types of features. Second, to
-achieve quantitative verification, we construct additional test datasets that destroy either textures or
-shapes, such as style-transferred version of clean data, saturated images and patch-shuffled ones, and then evaluate the classification accuracy of AT-CNNs and normal CNNs on these datasets. Our findings shed some light on **why AT-CNNs are more robust than those normally trained ones and contribute to a better understanding of adversarial training over CNNs from an interpretation
-perspective**.
+    We attempt to interpret how adversarially trained convolutional neural networks (AT-CNNs) recognize objects. We design systematic approaches to interpret AT-CNNs in both qualitative and quantitative ways and compare them with normally trained models. Surprisingly, we find that **adversarial training alleviates the texture bias of standard CNNs when trained on object recognition tasks, and helps CNNs learn a more shape-biased representation**. We validate our hypothesis from two aspects. First, we compare the salience maps of AT-CNNs and standard CNNs on clean images and images under different transformations. The comparison could visually show that the prediction of the two types of CNNs is sensitive to dramatically different types of features. Second, to achieve quantitative verification, we construct additional test datasets that destroy either textures or shapes, such as style-transferred version of clean data, saturated images and patch-shuffled ones, and then evaluate the classification accuracy of AT-CNNs and normal CNNs on these datasets. Our findings shed some light on **why AT-CNNs are more robust than those normally trained ones and contribute to a better understanding of adversarial training over CNNs from an interpretation perspective**.
 
 2. Multi-Sample Dropout for Accelerated Training and Better Generalization
 
@@ -20,86 +8,27 @@ perspective**.
 
 3. Spatial Group-wise Enhance: Improving Semantic Feature Learning in Convolutional Networks
     
-    The Convolutional Neural Networks (CNNs) generate the feature representation
-of complex objects by collecting hierarchical and different parts of semantic subfeatures. These sub-features can usually be distributed in grouped form in the
-feature vector of each layer [43, 32], representing various semantic entities. However, the activation of these sub-features is often spatially affected by similar patterns and noisy backgrounds, resulting in erroneous localization and identification. We propose a Spatial Group-wise Enhance (SGE) module that can **adjust the importance of each sub-feature by generating an attention factor for each spatial location in each semantic group, so that every individual group can autonomously
-enhance its learnt expression and suppress possible noise**. **The attention factors
-are only guided by the similarities between the global and local feature descriptors
-inside each group, thus the design of SGE module is extremely lightweight with
-almost no extra parameters and calculations**. Despite being trained with only category supervisions, the SGE component is extremely effective in highlighting multiple active areas with various high-order semantics (such as the dog’s eyes, nose, etc.). When integrated with popular CNN backbones, SGE can significantly boost the performance of image recognition tasks. Specifically, based on ResNet50 backbones, SGE achieves 1.2% Top-1 accuracy improvement on the ImageNet
-benchmark and 1.0∼2.0% AP gain on the COCO benchmark across a wide range of detectors (Faster/Mask/Cascade RCNN and RetinaNet). Codes and pretrained models are available at https://github.com/implus/PytorchInsight
+    The Convolutional Neural Networks (CNNs) generate the feature representation of complex objects by collecting hierarchical and different parts of semantic subfeatures. These sub-features can usually be distributed in grouped form in the feature vector of each layer [43, 32], representing various semantic entities. However, the activation of these sub-features is often spatially affected by similar patterns and noisy backgrounds, resulting in erroneous localization and identification. We propose a Spatial Group-wise Enhance (SGE) module that can **adjust the importance of each sub-feature by generating an attention factor for each spatial location in each semantic group, so that every individual group can autonomously enhance its learnt expression and suppress possible noise**. **The attention factors are only guided by the similarities between the global and local feature descriptors inside each group, thus the design of SGE module is extremely lightweight with almost no extra parameters and calculations**. Despite being trained with only category supervisions, the SGE component is extremely effective in highlighting multiple active areas with various high-order semantics (such as the dog’s eyes, nose, etc.). When integrated with popular CNN backbones, SGE can significantly boost the performance of image recognition tasks. Specifically, based on ResNet50 backbones, SGE achieves 1.2% Top-1 accuracy improvement on the ImageNet benchmark and 1.0∼2.0% AP gain on the COCO benchmark across a wide range of detectors (Faster/Mask/Cascade RCNN and RetinaNet). Codes and pretrained models are available at https://github.com/implus/PytorchInsight
 
 4. Speech2Face: Learning the Face Behind a Voice
 
-    How much can we infer about a person’s looks from the
-way they speak? In this paper, we study the task of reconstructing a facial image of a person from a short audio recording of that person speaking. We design and train a
-deep neural network to perform this task using millions of natural Internet/YouTube videos of people speaking. During training, our model learns **voice-face correlations that allow it to produce images that capture various physical attributes of the speakers such as age, gender and ethnicity**.
-This is done in a self-supervised manner, by utilizing the natural co-occurrence of faces and speech in Internet videos, without the need to model attributes explicitly. We evaluate and numerically quantify how—and in what manner—our Speech2Face reconstructions, obtained directly from audio, resemble the true face images of the speakers
+    How much can we infer about a person’s looks from the way they speak? In this paper, we study the task of reconstructing a facial image of a person from a short audio recording of that person speaking. We design and train a deep neural network to perform this task using millions of natural Internet/YouTube videos of people speaking. During training, our model learns **voice-face correlations that allow it to produce images that capture various physical attributes of the speakers such as age, gender and ethnicity**. This is done in a self-supervised manner, by utilizing the natural co-occurrence of faces and speech in Internet videos, without the need to model attributes explicitly. We evaluate and numerically quantify how—and in what manner—our Speech2Face reconstructions, obtained directly from audio, resemble the true face images of the speakers
 
 5. Network Pruning via Transformable Architecture Search
 
-    Network pruning reduces the computation costs of an over-parameterized network
-without performance damage. Prevailing pruning algorithms pre-define the width
-and depth of the pruned networks, and then transfer parameters from the unpruned
-network to pruned networks. To break the structure limitation of the pruned networks, we propose to apply neural architecture search to search directly for a
-network with flexible channel and layer sizes. The number of the channels/layers
-is learned by minimizing the loss of the pruned networks. The feature map of the
-pruned network is an **aggregation of K feature map fragments (generated by K
-networks of different sizes)**, which are sampled based on the probability distribution. The loss can be back-propagated not only to the network weights, but also to the parameterized distribution to explicitly tune the size of the channels/layers. Specifically, we **apply channel-wise interpolation to keep the feature map with different channel sizes aligned in the aggregation procedure**. The maximum probability for the size in each distribution serves as the width and depth of the pruned network, whose parameters are learned by knowledge transfer, e.g., knowledge distillation, from the original networks. Experiments on CIFAR-10, CIFAR-100
-and ImageNet demonstrate the effectiveness of our new perspective of network
-pruning compared to traditional network pruning algorithms. Various searching
-and knowledge transfer approaches are conducted to show the effectiveness of the
-two components.
+    Network pruning reduces the computation costs of an over-parameterized network without performance damage. Prevailing pruning algorithms pre-define the width and depth of the pruned networks, and then transfer parameters from the unpruned network to pruned networks. To break the structure limitation of the pruned networks, we propose to apply neural architecture search to search directly for a network with flexible channel and layer sizes. The number of the channels/layers is learned by minimizing the loss of the pruned networks. The feature map of the pruned network is an **aggregation of K feature map fragments (generated by K networks of different sizes)**, which are sampled based on the probability distribution. The loss can be back-propagated not only to the network weights, but also to the parameterized distribution to explicitly tune the size of the channels/layers. Specifically, we **apply channel-wise interpolation to keep the feature map with different channel sizes aligned in the aggregation procedure**. The maximum probability for the size in each distribution serves as the width and depth of the pruned network, whose parameters are learned by knowledge transfer, e.g., knowledge distillation, from the original networks. Experiments on CIFAR-10, CIFAR-100 and ImageNet demonstrate the effectiveness of our new perspective of network pruning compared to traditional network pruning algorithms. Various searching and knowledge transfer approaches are conducted to show the effectiveness of the two components.
 
-6. Semi-supervised learning based on generative adversarial network: a
-comparison between good GAN and bad GAN approach
+6. Semi-supervised learning based on generative adversarial network: a comparison between good GAN and bad GAN approach
 
-    Recently, semi-supervised learning methods based on
-generative adversarial networks (GANs) have received
-much attention. Among them, two distinct approaches have
-achieved competitive results on a variety of benchmark
-datasets. **Bad GAN learns a classifier with unrealistic samples distributed on the complement of the support of the input data. Conversely, Triple GAN consists of a three-player
-game that tries to leverage good generated samples to boost
-classification results**. In this paper, we perform a comprehensive comparison of these two approaches on different
-benchmark datasets. We demonstrate their different properties on image generation, and sensitivity to the amount
-of labeled data provided. By comprehensively comparing
-these two methods, we hope to shed light on the future of
-GAN-based semi-supervised learning
+    Recently, semi-supervised learning methods based on generative adversarial networks (GANs) have received much attention. Among them, two distinct approaches have achieved competitive results on a variety of benchmark datasets. **Bad GAN learns a classifier with unrealistic samples distributed on the complement of the support of the input data. Conversely, Triple GAN consists of a three-player game that tries to leverage good generated samples to boost classification results**. In this paper, we perform a comprehensive comparison of these two approaches on different benchmark datasets. We demonstrate their different properties on image generation, and sensitivity to the amount of labeled data provided. By comprehensively comparing these two methods, we hope to shed light on the future of GAN-based semi-supervised learning
 
 7. Non-Parametric Priors For Generative Adversarial Networks
 
-    The advent of generative adversarial networks
-(GAN) has enabled new capabilities in synthesis, interpolation, and data augmentation heretofore considered very challenging. However, one
-of the common assumptions in most GAN architectures is the **assumption of simple parametric latent-space distributions**. While easy to implement, a simple latent-space distribution can be
-problematic for uses such as interpolation. This is due to distributional mismatches when samples are interpolated in the latent space. We present a straightforward formalization of this problem; using basic results from probability theory and offthe-shelf-optimization tools, we develop ways to arrive at appropriate non-parametric priors. The obtained prior exhibits unusual qualitative properties in terms of its shape, and quantitative benefits in terms of lower divergence with its mid-point
-distribution. We demonstrate that our designed prior helps improve image generation along any Euclidean straight line during interpolation, both qualitatively and quantitatively, without any additional training or architectural modifications. The
-proposed formulation is quite flexible, paving the way to impose newer constraints on the latentspace statistics
+    The advent of generative adversarial networks (GAN) has enabled new capabilities in synthesis, interpolation, and data augmentation heretofore considered very challenging. However, one of the common assumptions in most GAN architectures is the **assumption of simple parametric latent-space distributions**. While easy to implement, a simple latent-space distribution can be problematic for uses such as interpolation. This is due to distributional mismatches when samples are interpolated in the latent space. We present a straightforward formalization of this problem; using basic results from probability theory and offthe-shelf-optimization tools, we develop ways to arrive at appropriate non-parametric priors. The obtained prior exhibits unusual qualitative properties in terms of its shape, and quantitative benefits in terms of lower divergence with its mid-point distribution. We demonstrate that our designed prior helps improve image generation along any Euclidean straight line during interpolation, both qualitatively and quantitatively, without any additional training or architectural modifications. The proposed formulation is quite flexible, paving the way to impose newer constraints on the latentspace statistics
 
-8. Testing Deep Neural Network based
-Image Classifiers
+8. Testing Deep Neural Network based Image Classifiers
 
-    Image classification is an important task in today’s
-world with many applications from socio-technical to safetycritical domains. The recent advent of Deep Neural Network
-(DNN) is the key behind such a wide-spread success. However,
-such wide adoption comes with the concerns about the reliability
-of these systems, as several erroneous behaviors have already
-been reported in many sensitive and critical circumstances. Thus,
-it has become crucial to rigorously test the image classifiers to
-ensure high reliability.
-Many reported erroneous cases in popular neural image
-classifiers appear because the models often confuse one class with
-another, or show biases towards some classes over others. These
-errors usually violate some group properties. Most existing DNN
-testing and verification techniques focus on per image violations
-and thus fail to detect such group-level confusions or biases. In
-this paper, we design, implement and evaluate DeepInspect, a
-white box testing tool, for **automatically detecting confusion and
-bias of DNN-driven image classification applications**. We evaluate
-DeepInspect using popular DNN-based image classifiers and
-detect hundreds of classification mistakes. Some of these cases
-are able to expose potential biases of the network towards certain
-populations. DeepInspect further reports many classification
-errors in state-of-the-art robust models.
+    Image classification is an important task in today’s world with many applications from socio-technical to safetycritical domains. The recent advent of Deep Neural Network (DNN) is the key behind such a wide-spread success. However, such wide adoption comes with the concerns about the reliability of these systems, as several erroneous behaviors have already been reported in many sensitive and critical circumstances. Thus, it has become crucial to rigorously test the image classifiers to ensure high reliability. Many reported erroneous cases in popular neural image classifiers appear because the models often confuse one class with another, or show biases towards some classes over others. These errors usually violate some group properties. Most existing DNN testing and verification techniques focus on per image violations and thus fail to detect such group-level confusions or biases. In this paper, we design, implement and evaluate DeepInspect, a white box testing tool, for **automatically detecting confusion and bias of DNN-driven image classification applications**. We evaluate DeepInspect using popular DNN-based image classifiers and detect hundreds of classification mistakes. Some of these cases are able to expose potential biases of the network towards certain populations. DeepInspect further reports many classification errors in state-of-the-art robust models.
 
 9. Zero-Shot Knowledge Distillation in Deep Networks
 
